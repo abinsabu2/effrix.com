@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effrix Media — Sleep, without the scrolling</title>
+    <meta name="description" content="Effrix Media turns your phone into the one thing in the bedroom that helps you sleep: a dark screen, a slow voice, and sounds that fade out on their own.">
+    <meta name="theme-color" content="#0a0c1a">
+    <link rel="canonical" href="https://effrix.com/sleep.html">
+    <link rel="icon" href="logo.png">
+    <meta property="og:title" content="Effrix Media — Sleep, without the scrolling">
+    <meta property="og:description" content="A dark screen, a slow voice, and sounds that fade out on their own.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://effrix.com/sleep.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet" />
+    <script>document.documentElement.classList.add('js')</script>
+    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js" defer></script>
+
+    <style>
+        :root {
+            --background: hsl(232, 44%, 7%);
+            --foreground: hsl(232, 30%, 94%);
+            --primary: hsl(258, 78%, 70%);
+            --primary-foreground: hsl(232, 44%, 8%);
+            --accent: hsl(178, 62%, 60%);
+            --muted-foreground: hsl(232, 14%, 62%);
+            --border: hsl(232, 26%, 18%);
+            --card: hsl(232, 38%, 11%);
+            --ease: cubic-bezier(.22, 1, .36, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body {
+            margin: 0;
+            background: var(--background);
+            color: var(--foreground);
+            font: 300 18px/1.7 "Plus Jakarta Sans", system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: clip;
+        }
+        h1, h2, h3, p, ol, ul { margin: 0; padding: 0; }
+        ol, ul { list-style: none; }
+        a { color: inherit; text-decoration: none; }
+        :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 10px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+        section { padding: 128px 0; position: relative; }
+
+        h1 { font-weight: 700; font-size: clamp(46px, 6.5vw, 96px); line-height: 1.02; letter-spacing: -.04em; }
+        h2 { font-weight: 700; font-size: clamp(32px, 4vw, 56px); line-height: 1.08; letter-spacing: -.03em; text-wrap: balance; }
+        h3 { font-weight: 700; font-size: 21px; line-height: 1.3; letter-spacing: -.02em; }
+        .label { display: block; font-weight: 500; font-size: 12px; line-height: 1; text-transform: uppercase; letter-spacing: .16em; color: var(--primary); }
+        .muted { color: var(--muted-foreground); }
+        .head { max-width: 720px; margin-bottom: 64px; }
+        .head h2 { margin-top: 20px; }
+        .head.center { margin-inline: auto; text-align: center; }
+
+        /* ---------- Navbar ---------- */
+        .nav {
+            position: fixed; inset: 0 0 auto; z-index: 50; height: 76px;
+            border-bottom: 1px solid transparent;
+            transition: background-color .4s, border-color .4s, backdrop-filter .4s;
+        }
+        .nav.scrolled {
+            background: hsl(232 44% 7% / .85);
+            -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+            border-color: var(--border);
+        }
+        .nav .container { height: 100%; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+        .wordmark { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; letter-spacing: .14em; justify-self: start; }
+        .wordmark svg { width: 20px; height: 20px; color: var(--primary); fill: hsl(258 78% 70% / .25); }
+        .nav-links { display: flex; gap: 40px; font-size: 15px; font-weight: 500; color: var(--muted-foreground); }
+        .nav-links a { transition: color .25s; }
+        .nav-links a:hover { color: var(--foreground); }
+        .pill {
+            justify-self: end; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            height: 44px; padding: 0 22px; border-radius: 999px;
+            background: var(--primary); color: var(--primary-foreground);
+            font-weight: 500; font-size: 15px; white-space: nowrap;
+            transition: transform .25s var(--ease), box-shadow .25s;
+        }
+        .pill:hover { transform: translateY(-1px); box-shadow: 0 0 0 6px hsl(258 78% 70% / .14), 0 12px 32px -10px hsl(258 78% 70% / .7); }
+        .pill.ghost { background: transparent; color: var(--foreground); box-shadow: inset 0 0 0 1px var(--border); }
+        .pill.ghost:hover { box-shadow: inset 0 0 0 1px hsl(258 78% 70% / .5); }
+        .pill .short { display: none; }
+
+        /* ---------- Aurora + stars ---------- */
+        .aurora { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+        .blob { position: absolute; width: 560px; height: 560px; border-radius: 50%; filter: blur(120px); opacity: .35; will-change: transform; }
+        .blob.lav { top: -160px; left: 25%; background: hsl(258, 78%, 60%); animation: driftA 22s ease-in-out infinite; }
+        .blob.teal { bottom: -220px; right: 4%; background: var(--accent); animation: driftB 22s ease-in-out infinite; }
+        .cta .aurora, .cta .stars { -webkit-mask-image: linear-gradient(transparent, #000 35%); mask-image: linear-gradient(transparent, #000 35%); }
+        .cta .blob.lav { top: 10%; left: 18%; }
+        .cta .blob.teal { bottom: -10%; right: 18%; }
+        @keyframes driftA { 50% { transform: translate(160px, 60px); } }
+        @keyframes driftB { 50% { transform: translate(-160px, -60px); } }
+
+        .stars { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+        .stars div { position: absolute; border-radius: 50%; background: var(--foreground); }
+        .stars .tw { animation: twinkle var(--d) ease-in-out var(--dl) infinite; }
+        @keyframes twinkle { 50% { opacity: .02; } }
+
+        /* ---------- Hero ---------- */
+        .hero { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: 116px 0 72px; overflow: hidden; isolation: isolate; }
+        .hero .container { width: 100%; }
+        .hero-grid { display: grid; grid-template-columns: 55fr 45fr; gap: 48px; align-items: center; }
+        .hero .label { margin-bottom: 28px; }
+        h1 .line { display: block; white-space: nowrap; animation: rise .9s var(--ease) both; animation-delay: calc(var(--i) * .1s + .1s); }
+        @keyframes rise { from { opacity: 0; transform: translateY(40px); filter: blur(8px); } to { opacity: 1; transform: none; filter: blur(0); } }
+        .fade-in { animation: fadeUp .9s var(--ease) both; animation-delay: var(--dl, .45s); }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } }
+        .sub { margin-top: 28px; max-width: 520px; color: var(--muted-foreground); }
+
+        .badges { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+        .badge {
+            display: inline-flex; align-items: center; gap: 12px; height: 58px; padding: 0 22px 0 16px;
+            border-radius: 16px; border: 1px solid var(--border);
+            background: hsl(232 38% 11% / .7); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+            transition: border-color .25s, transform .25s var(--ease), background-color .25s;
+        }
+        .badge:hover { border-color: hsl(258 78% 70% / .55); background: hsl(232 38% 14% / .8); transform: translateY(-2px); }
+        .badge svg { width: 24px; height: 24px; flex: none; }
+        .badge small { display: block; font-size: 11px; font-weight: 500; line-height: 1.2; color: var(--muted-foreground); }
+        .badge strong { display: block; font-size: 16px; font-weight: 700; line-height: 1.25; letter-spacing: -.01em; }
+
+        .rating { margin-top: 28px; display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+        .five { display: inline-flex; gap: 3px; color: var(--primary); }
+        .five svg { width: 16px; height: 16px; fill: currentColor; }
+
+        /* ---------- Phone ---------- */
+        .phone-stage { perspective: 1500px; display: flex; justify-content: center; }
+        .phone-tilt { transform: rotateY(calc(-14deg * (1 - var(--p, 0)))) rotateZ(calc(3deg * (1 - var(--p, 0)))); transform-style: preserve-3d; }
+        .phone-enter { animation: phoneIn 1.2s var(--ease) .2s both; }
+        @keyframes phoneIn { from { opacity: 0; transform: scale(.9); } }
+        .float { animation: float var(--fd, 6s) ease-in-out var(--fdl, 1.4s) infinite; }
+        @keyframes float { 50% { transform: translateY(var(--fy, -12px)); } }
+
+        .phone {
+            container-type: inline-size;
+            position: relative; height: min(640px, 74vh); aspect-ratio: 9 / 19.5; padding: 10px;
+            border-radius: 48px;
+            background: linear-gradient(160deg, hsl(232 26% 24%), hsl(232 40% 9%) 38%, hsl(232 30% 15%));
+            box-shadow: 0 0 0 1px hsl(232 30% 30% / .6), 0 50px 100px -30px rgb(0 0 0 / .75), 0 0 120px -20px hsl(258 78% 60% / .4);
+        }
+        .screen {
+            position: relative; height: 100%; overflow: hidden; border-radius: 38px;
+            display: flex; flex-direction: column; padding: 1.4em 1.6em 2em;
+            font-size: 4.3cqw; line-height: 1.4;
+            background:
+                radial-gradient(120% 60% at 50% 0%, hsl(258 60% 30% / .85), transparent 62%),
+                linear-gradient(180deg, hsl(234 45% 10%), hsl(232 50% 5%));
+        }
+        .screen svg { width: 1.1em; height: 1.1em; }
+        .island { position: absolute; top: .75em; left: 50%; translate: -50% 0; width: 32%; height: 2em; border-radius: 1em; background: #000; }
+        .status { display: flex; justify-content: space-between; align-items: center; padding: .2em .9em 0; font-size: .82em; font-weight: 500; color: hsl(232 30% 94% / .75); font-variant-numeric: tabular-nums; }
+        .batt { position: relative; width: 1.9em; height: .9em; border: 1px solid currentColor; border-radius: .3em; }
+        .batt::after { content: ""; position: absolute; inset: 1.5px 40% 1.5px 1.5px; background: currentColor; border-radius: 1px; }
+        .scr-label { display: block; margin-top: 2.2em; text-align: center; font-size: .7em; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--primary); }
+
+        /* hero screen */
+        .moon-glow { width: 3.6em; height: 3.6em; margin: 1.2em auto 0; display: grid; place-items: center; border-radius: 50%; background: radial-gradient(circle, hsl(258 78% 70% / .4), transparent 70%); color: hsl(258 90% 86%); }
+        .moon-glow svg { width: 1.8em; height: 1.8em; fill: hsl(258 90% 86% / .3); }
+        .ring { position: relative; width: 74%; aspect-ratio: 1; margin: 1em auto 0; }
+        .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); fill: none; }
+        .ring .track { stroke: hsl(232 30% 94% / .08); }
+        .ring .prog { stroke: var(--primary); stroke-linecap: round; filter: drop-shadow(0 0 4px hsl(258 78% 70% / .7)); }
+        .ring-text { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+        .ring-text b { font-size: 2.8em; font-weight: 700; line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+        .ring-text span { margin-top: .5em; font-size: .78em; color: var(--muted-foreground); }
+        .chip { display: flex; align-items: center; gap: .5em; width: max-content; margin: 1.2em auto 0; padding: .5em 1em; border-radius: 99px; font-size: .82em; font-weight: 500; background: hsl(232 30% 94% / .06); border: 1px solid hsl(232 30% 94% / .08); }
+        .chip svg { color: var(--primary); }
+        .taper { display: flex; align-items: flex-end; justify-content: center; gap: .3em; height: 1.6em; margin-top: 1em; }
+        .taper span { width: .3em; border-radius: .2em; background: var(--primary); }
+        .scr-btn { margin-top: auto; height: 3.3em; display: grid; place-items: center; border-radius: 99px; font-weight: 500; background: hsl(258 78% 70% / .14); border: 1px solid hsl(258 78% 70% / .3); color: hsl(258 90% 88%); }
+
+        /* story screen */
+        .art { position: relative; margin-top: 1.3em; aspect-ratio: 1; border-radius: 1.4em; overflow: hidden;
+            background: radial-gradient(circle at 68% 30%, hsl(258 80% 78% / .5), transparent 40%), linear-gradient(165deg, hsl(258 48% 34%), hsl(232 50% 12%)); }
+        .art::before { content: ""; position: absolute; top: 22%; left: 62%; width: 12%; aspect-ratio: 1; border-radius: 50%; background: hsl(258 90% 92%); box-shadow: 0 0 2em hsl(258 90% 80% / .8); }
+        .art::after { content: ""; position: absolute; inset: auto -10% -30% -10%; height: 60%; border-radius: 50% 50% 0 0; background: hsl(232 50% 7%); }
+        .track-title { margin-top: 1.1em; font-size: 1.2em; font-weight: 700; letter-spacing: -.02em; }
+        .track-meta { font-size: .78em; color: var(--muted-foreground); }
+        .wave { display: flex; align-items: center; gap: .18em; height: 2.6em; margin-top: 1em; }
+        .wave span { flex: 1; border-radius: 1em; background: hsl(232 30% 94% / .18); }
+        .wave span.on { background: var(--primary); }
+        .times { display: flex; justify-content: space-between; margin-top: .4em; font-size: .7em; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+        .controls { margin-top: auto; display: flex; justify-content: space-around; align-items: center; color: var(--muted-foreground); }
+        .controls svg { width: 1.4em; height: 1.4em; }
+        .play { width: 3.6em; height: 3.6em; display: grid; place-items: center; border-radius: 50%; background: var(--primary); color: var(--primary-foreground); }
+        .play svg { fill: currentColor; }
+
+        /* breathing screen */
+        .breath { position: relative; width: 80%; aspect-ratio: 1; margin: 2.2em auto 0; display: grid; place-items: center; }
+        .breath::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1px solid hsl(258 78% 70% / .22); }
+        .breath .core { width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, hsl(258 78% 74% / .6), hsl(258 78% 60% / .14) 62%, transparent 70%); animation: breathe 10s ease-in-out infinite; }
+        @keyframes breathe { 0%, 100% { transform: scale(.6); opacity: .5; } 45%, 55% { transform: scale(1); opacity: 1; } }
+        .breath-text { position: absolute; text-align: center; }
+        .breath-text b { display: block; font-size: 1.25em; font-weight: 700; letter-spacing: -.02em; }
+        .breath-text span { font-size: .75em; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+        .seg { display: flex; gap: .3em; width: max-content; margin: 1.6em auto 0; padding: .3em; border-radius: 99px; background: hsl(232 30% 94% / .06); }
+        .seg span { padding: .4em 1.1em; border-radius: 99px; font-size: .8em; font-weight: 500; color: var(--muted-foreground); }
+        .seg span.on { background: hsl(258 78% 70% / .2); color: var(--foreground); }
+        .meter { margin-top: auto; }
+        .meter-row { display: flex; justify-content: space-between; font-size: .75em; color: var(--muted-foreground); }
+        .bar { height: .35em; margin-top: .6em; border-radius: 1em; background: hsl(232 30% 94% / .08); overflow: hidden; }
+        .bar i { display: block; height: 100%; width: 22%; border-radius: inherit; background: var(--primary); }
+
+        /* bedtime screen */
+        .scr-muted { margin-top: 1.4em; text-align: center; font-size: .82em; color: var(--muted-foreground); }
+        .big-time { text-align: center; font-size: 3.4em; font-weight: 700; line-height: 1.1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+        .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: .45em; height: 6.5em; margin-top: 1.2em; }
+        .week div { position: relative; border-radius: .6em; background: hsl(232 30% 94% / .04); }
+        .week i { position: absolute; left: 50%; top: var(--t); translate: -50% 0; width: .6em; height: .6em; border-radius: 50%; background: var(--primary); box-shadow: 0 0 .6em hsl(258 78% 70% / .7); }
+        .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: .45em; margin-top: .4em; text-align: center; font-size: .66em; color: var(--muted-foreground); }
+        .stack { margin-top: auto; display: grid; gap: .6em; }
+        .row-card { display: flex; align-items: center; gap: .8em; padding: .8em .9em; border-radius: 1.1em; background: hsl(232 30% 94% / .05); border: 1px solid hsl(232 30% 94% / .07); }
+        .row-card .ico { width: 2.2em; height: 2.2em; flex: none; display: grid; place-items: center; border-radius: .7em; background: hsl(258 78% 70% / .14); color: var(--primary); }
+        .row-card b { display: block; font-size: .85em; font-weight: 500; }
+        .row-card span { display: block; font-size: .72em; color: var(--muted-foreground); }
+        .toggle { position: relative; width: 2.4em; height: 1.4em; margin-left: auto; flex: none; border-radius: 99px; background: var(--primary); }
+        .toggle::after { content: ""; position: absolute; top: .2em; right: .2em; width: 1em; height: 1em; border-radius: 50%; background: var(--primary-foreground); }
+
+        /* ---------- Social proof ---------- */
+        .proof { padding: 28px 0; border-block: 1px solid var(--border); }
+        .proof .container { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 20px; font-size: 16px; color: var(--muted-foreground); text-align: center; }
+        .proof b { color: var(--foreground); font-weight: 500; }
+        .proof .dot { color: var(--primary); }
+
+        /* ---------- Reveal ---------- */
+        .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--i, 0) * .1s); }
+        .js .reveal.in { opacity: 1; transform: none; }
+
+        /* ---------- Cards ---------- */
+        .card { height: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 36px 32px; }
+        .ico-box { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: hsl(258 78% 70% / .12); color: var(--primary); }
+        .ico-box svg { width: 22px; height: 22px; }
+        .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .pillars h3 { margin: 28px 0 10px; }
+        .pillars p { font-size: 16px; line-height: 1.65; color: var(--muted-foreground); }
+
+        /* ---------- Features ---------- */
+        #features { padding-top: 32px; }
+        .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .feature + .feature { margin-top: 120px; }
+        .feature:nth-child(even) .visual { order: 2; }
+        .visual { position: relative; display: flex; justify-content: center; padding: 24px 0; }
+        .visual::before { content: ""; position: absolute; top: 50%; left: 50%; translate: -50% -50%; width: 70%; aspect-ratio: 1; border-radius: 50%; background: hsl(258 78% 60% / .2); filter: blur(80px); }
+        .feature .phone { height: min(560px, 72vh); }
+        .feature .float { --fy: -8px; --fdl: 0s; }
+        .feature .copy { max-width: 480px; }
+        .feature h3 { margin: 20px 0 16px; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.12; letter-spacing: -.03em; }
+        .feature p { color: var(--muted-foreground); }
+
+        /* ---------- Sounds ---------- */
+        .sounds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .tile { height: 100%; padding: 22px; border-radius: 20px; background: var(--card); border: 1px solid var(--border); transition: transform .25s var(--ease), border-color .25s, background-color .25s; }
+        .tile:hover { transform: translateY(-4px); border-color: hsl(258 78% 70% / .55); background: hsl(232 38% 13%); }
+        .tile .ico-box { width: 42px; height: 42px; border-radius: 12px; }
+        .tile .ico-box svg { width: 20px; height: 20px; }
+        .tile b { display: block; margin-top: 32px; font-size: 16px; font-weight: 500; line-height: 1.35; }
+        .tile span { font-size: 14px; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+
+        /* ---------- Routine ---------- */
+        .routine { display: grid; grid-template-columns: 5fr 6fr; gap: 64px; align-items: start; }
+        .routine .head { position: sticky; top: 140px; margin: 0; }
+        .timeline { position: relative; display: grid; gap: 56px; }
+        .timeline::before { content: ""; position: absolute; left: 7px; top: 12px; bottom: 12px; width: 2px; border-radius: 2px; background: linear-gradient(var(--primary), hsl(258 78% 70% / .08)); transform: scaleY(0); transform-origin: top; transition: transform 1.4s var(--ease); }
+        .timeline.in::before, html:not(.js) .timeline::before { transform: scaleY(1); }
+        .moment { position: relative; padding-left: 48px; }
+        .moment::before { content: ""; position: absolute; left: 0; top: 10px; width: 16px; height: 16px; border-radius: 50%; background: var(--background); border: 2px solid var(--primary); box-shadow: 0 0 0 6px hsl(258 78% 70% / .1); }
+        .moment:last-child::before { border-color: var(--border); box-shadow: none; }
+        .moment time { display: block; font-size: 32px; font-weight: 700; line-height: 1.1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+        .moment h3 { margin-top: 10px; font-size: 18px; font-weight: 500; color: var(--primary); letter-spacing: 0; }
+        .moment p { margin-top: 4px; color: var(--muted-foreground); }
+
+        /* ---------- Reviews ---------- */
+        .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .review { display: flex; flex-direction: column; }
+        .review h3 { margin: 20px 0 10px; font-size: 19px; }
+        .review p { font-size: 16px; line-height: 1.65; color: var(--muted-foreground); }
+        .review footer { margin-top: auto; padding-top: 24px; font-size: 15px; font-weight: 500; }
+        .review footer span { font-weight: 300; color: var(--muted-foreground); }
+
+        /* ---------- Pricing ---------- */
+        .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 880px; margin: 0 auto; }
+        .plan { display: flex; flex-direction: column; padding: 40px 36px; }
+        .plan.premium { border-color: hsl(258 78% 70% / .5); background: linear-gradient(180deg, hsl(258 50% 20% / .5), var(--card) 55%); box-shadow: 0 30px 80px -30px hsl(258 78% 60% / .45); }
+        .plan-name { font-size: 15px; font-weight: 500; color: var(--primary); }
+        .price { margin-top: 16px; font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+        .price small { font-size: 18px; font-weight: 300; letter-spacing: 0; color: var(--muted-foreground); }
+        .price-alt { margin-top: 8px; font-size: 15px; color: var(--muted-foreground); min-height: 1.7em; }
+        .plan ul { display: grid; gap: 12px; margin: 32px 0 36px; font-size: 16px; }
+        .plan li { display: flex; gap: 12px; align-items: flex-start; }
+        .plan li svg { width: 18px; height: 18px; flex: none; margin-top: 4px; color: var(--primary); }
+        .plan .pill { justify-self: auto; margin-top: auto; }
+
+        /* ---------- Final CTA ---------- */
+        .cta { overflow: hidden; isolation: isolate; text-align: center; padding: 176px 0; }
+        .cta p { margin-top: 20px; color: var(--muted-foreground); }
+        .cta .badges { justify-content: center; }
+
+        /* ---------- Footer ---------- */
+        .footer { padding: 72px 0 40px; border-top: 1px solid var(--border); font-size: 15px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+        .footer p { margin-top: 14px; color: var(--muted-foreground); }
+        .footer h4 { margin: 0 0 16px; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .16em; color: var(--muted-foreground); }
+        .footer ul { display: grid; gap: 10px; }
+        .footer ul a { transition: color .25s; }
+        .footer ul a:hover { color: var(--primary); }
+        .copyright { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted-foreground); }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 1023px) {
+            .hero .phone { height: min(540px, 70vh); }
+            .sounds { grid-template-columns: repeat(3, 1fr); }
+            .pillars, .reviews { grid-template-columns: 1fr; max-width: 560px; }
+            .routine { grid-template-columns: 1fr; gap: 48px; }
+            .routine .head { position: static; }
+        }
+        @media (max-width: 767px) {
+            .container { padding: 0 20px; }
+            section { padding: 88px 0; }
+            .nav .container { grid-template-columns: 1fr auto; }
+            .nav-links { display: none; }
+            .nav .pill { height: 40px; padding: 0 20px; }
+            .nav .pill .long { display: none; }
+            .nav .pill .short { display: inline; }
+            .hero { min-height: 0; padding: 100px 0 72px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-visual { order: -1; }
+            .hero .phone { height: 52vh; height: 52svh; }
+            .phone-tilt { transform: none; }
+            h1 { font-size: 46px; }
+            h1 .line { white-space: normal; }
+            .blob { width: 320px; height: 320px; }
+            .feature { grid-template-columns: 1fr; gap: 40px; }
+            .feature + .feature { margin-top: 88px; }
+            .feature:nth-child(even) .visual { order: 0; }
+            .feature .phone { height: min(500px, 64vh); }
+            .sounds { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .tile { padding: 18px; }
+            .plans { grid-template-columns: 1fr; }
+            .plan { padding: 32px 28px; }
+            .cta { padding: 120px 0; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid > :first-child { grid-column: 1 / -1; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="nav" id="nav">
+        <div class="container">
+            <a href="#top" class="wordmark" aria-label="Effrix Media home"><i data-lucide="moon"></i>EFFRIX MEDIA</a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="#features">Features</a>
+                <a href="#sounds">Sounds</a>
+                <a href="#pricing">Pricing</a>
+            </nav>
+            <a href="#download" class="pill"><span class="long">Download</span><span class="short">Get</span></a>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="aurora" aria-hidden="true"><div class="blob lav"></div><div class="blob teal"></div></div>
+            <div class="stars" aria-hidden="true"></div>
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-copy">
+                        <span class="label fade-in" style="--dl:0s">Sleep &amp; wind-down</span>
+                        <h1>
+                            <span class="line" style="--i:0">Put the phone</span>
+                            <span class="line" style="--i:1">down. We’ll</span>
+                            <span class="line" style="--i:2">take it from here.</span>
+                        </h1>
+                        <p class="sub fade-in">Effrix Media turns your phone into the one thing in the bedroom that helps you sleep: a dark screen, a slow voice, and sounds that fade out on their own.</p>
+                        <div class="badges fade-in" style="--dl:.6s">
+                            <a class="badge" href="https://apps.apple.com/" aria-label="Download on the App Store"><i data-lucide="apple"></i><span><small>Download on the</small><strong>App Store</strong></span></a>
+                            <a class="badge" href="https://play.google.com/store/apps" aria-label="Get it on Google Play"><i data-lucide="play"></i><span><small>Get it on</small><strong>Google Play</strong></span></a>
+                        </div>
+                        <p class="rating fade-in" style="--dl:.75s">
+                            <span class="five" aria-hidden="true"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span>
+                            4.8 stars · 62,000 ratings
+                        </p>
+                    </div>
+
+                    <div class="hero-visual phone-stage">
+                        <div class="phone-tilt" id="tilt">
+                            <div class="phone-enter">
+                                <div class="float">
+                                    <div class="phone" role="img" aria-label="Effrix Media sleep screen: a moon, a 29 minute sleep timer and a single Stop button">
+                                        <div class="screen">
+                                            <div class="island"></div>
+                                            <div class="status"><span>22:30</span><span class="batt"></span></div>
+                                            <span class="scr-label">Tonight</span>
+                                            <div class="moon-glow"><i data-lucide="moon"></i></div>
+                                            <div class="ring">
+                                                <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="54" stroke-width="3"/><circle class="prog" cx="60" cy="60" r="54" stroke-width="3" stroke-dasharray="339.3" stroke-dashoffset="112"/></svg>
+                                                <div class="ring-text"><b>29:41</b><span>until silence</span></div>
+                                            </div>
+                                            <div class="chip"><i data-lucide="cloud-rain"></i>Rain on a tent</div>
+                                            <div class="taper">
+                                                <span style="height:100%;opacity:1"></span><span style="height:92%;opacity:.92"></span><span style="height:84%;opacity:.84"></span><span style="height:75%;opacity:.75"></span><span style="height:66%;opacity:.66"></span><span style="height:57%;opacity:.57"></span><span style="height:48%;opacity:.48"></span><span style="height:39%;opacity:.4"></span><span style="height:30%;opacity:.32"></span><span style="height:22%;opacity:.24"></span><span style="height:15%;opacity:.17"></span><span style="height:9%;opacity:.1"></span>
+                                            </div>
+                                            <div class="scr-btn">Stop</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social proof -->
+        <div class="proof">
+            <div class="container">
+                <span><b>4.8</b> on the App Store</span>
+                <span class="dot" aria-hidden="true">·</span>
+                <span><b>1.2M</b> downloads</span>
+                <span class="dot" aria-hidden="true">·</span>
+                <span>“The first sleep app that doesn’t want your attention.” — <b>The Verge</b></span>
+            </div>
+        </div>
+
+        <!-- Three pillars -->
+        <section aria-labelledby="pillars-title">
+            <div class="container">
+                <h2 class="sr-only" id="pillars-title">Why it works</h2>
+                <ul class="pillars">
+                    <li class="reveal" style="--i:0"><div class="card">
+                        <div class="ico-box"><i data-lucide="smartphone"></i></div>
+                        <h3>Nothing to scroll</h3>
+                        <p>One screen, one button. No feed, no streaks, no notifications at 9pm telling you to relax.</p>
+                    </div></li>
+                    <li class="reveal" style="--i:1"><div class="card">
+                        <div class="ico-box"><i data-lucide="volume-1"></i></div>
+                        <h3>Fades out by itself</h3>
+                        <p>Every session ends on a timer that tapers the volume, so nothing wakes you at 3am.</p>
+                    </div></li>
+                    <li class="reveal" style="--i:2"><div class="card">
+                        <div class="ico-box"><i data-lucide="wifi-off"></i></div>
+                        <h3>Works offline</h3>
+                        <p>Download what you use. Airplane mode is the point.</p>
+                    </div></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Feature showcase -->
+        <section id="features" aria-labelledby="features-title">
+            <div class="container">
+                <h2 class="sr-only" id="features-title">Features</h2>
+
+                <article class="feature">
+                    <div class="visual reveal">
+                        <div class="float" style="--fd:7s">
+                            <div class="phone" role="img" aria-label="Sleep story player with a waveform and a play button">
+                                <div class="screen">
+                                    <div class="island"></div>
+                                    <div class="status"><span>22:41</span><span class="batt"></span></div>
+                                    <span class="scr-label">Sleep story</span>
+                                    <div class="art"></div>
+                                    <div class="track-title">The Lighthouse Keeper</div>
+                                    <div class="track-meta">Read slowly · 38 min</div>
+                                    <div class="wave" data-wave></div>
+                                    <div class="times"><span>12:04</span><span>-25:56</span></div>
+                                    <div class="controls"><i data-lucide="rotate-ccw"></i><span class="play"><i data-lucide="pause"></i></span><i data-lucide="timer"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="copy reveal" style="--i:1">
+                        <span class="label">01 · Stories</span>
+                        <h3>Sleep stories, read slowly</h3>
+                        <p>Forty stories recorded at a deliberate pace by people with unhurried voices. Most listeners never hear the ending.</p>
+                    </div>
+                </article>
+
+                <article class="feature">
+                    <div class="visual reveal">
+                        <div class="float" style="--fd:8s;--fdl:-2s">
+                            <div class="phone" role="img" aria-label="Breathing session with a slowly expanding circle">
+                                <div class="screen">
+                                    <div class="island"></div>
+                                    <div class="status"><span>21:45</span><span class="batt"></span></div>
+                                    <span class="scr-label">Breathe</span>
+                                    <div class="breath"><div class="core"></div><div class="breath-text"><b>Breathe in</b><span>2:48 left</span></div></div>
+                                    <div class="seg"><span class="on">4 min</span><span>12 min</span></div>
+                                    <div class="meter">
+                                        <div class="meter-row"><span>Screen brightness</span><span>22%</span></div>
+                                        <div class="bar"><i></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="copy reveal" style="--i:1">
+                        <span class="label">02 · Breathing</span>
+                        <h3>Breathing that matches your night</h3>
+                        <p>Pick four minutes or twelve. The circle on screen dims as you go, so it never becomes the bright thing in a dark room.</p>
+                    </div>
+                </article>
+
+                <article class="feature">
+                    <div class="visual reveal">
+                        <div class="float" style="--fd:6.5s;--fdl:-4s">
+                            <div class="phone" role="img" aria-label="Wind-down screen showing your usual start time of 22:10 across the week">
+                                <div class="screen">
+                                    <div class="island"></div>
+                                    <div class="status"><span>21:38</span><span class="batt"></span></div>
+                                    <span class="scr-label">Wind-down</span>
+                                    <p class="scr-muted">You usually start around</p>
+                                    <div class="big-time">22:10</div>
+                                    <div class="week">
+                                        <div><i style="--t:38%"></i></div><div><i style="--t:46%"></i></div><div><i style="--t:30%"></i></div><div><i style="--t:42%"></i></div><div><i style="--t:62%"></i></div><div><i style="--t:78%"></i></div><div><i style="--t:40%"></i></div>
+                                    </div>
+                                    <div class="days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+                                    <div class="stack">
+                                        <div class="row-card"><span class="ico"><i data-lucide="sparkles"></i></span><div><b>Getting ready</b><span>Dimming at 21:40</span></div><span class="toggle"></span></div>
+                                        <div class="row-card"><span class="ico"><i data-lucide="timer"></i></span><div><b>Sleep timer</b><span>Fade over 30 min</span></div><span class="toggle"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="copy reveal" style="--i:1">
+                        <span class="label">03 · Wind-down</span>
+                        <h3>A wind-down that learns your bedtime</h3>
+                        <p>Effrix Media notices when you usually start and quietly gets ready, without asking you to set a schedule.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sound library -->
+        <section id="sounds">
+            <div class="container">
+                <div class="head reveal">
+                    <span class="label">Sound library</span>
+                    <h2>Eight sounds. That’s all we need.</h2>
+                </div>
+                <ul class="sounds">
+                    <li class="reveal" style="--i:0"><div class="tile"><div class="ico-box"><i data-lucide="cloud-rain"></i></div><b>Rain on a tent</b><span>45 min</span></div></li>
+                    <li class="reveal" style="--i:1"><div class="tile"><div class="ico-box"><i data-lucide="waves"></i></div><b>Slow ocean</b><span>60 min</span></div></li>
+                    <li class="reveal" style="--i:2"><div class="tile"><div class="ico-box"><i data-lucide="trees"></i></div><b>Night forest</b><span>45 min</span></div></li>
+                    <li class="reveal" style="--i:3"><div class="tile"><div class="ico-box"><i data-lucide="cloud-lightning"></i></div><b>Distant thunder</b><span>30 min</span></div></li>
+                    <li class="reveal" style="--i:4"><div class="tile"><div class="ico-box"><i data-lucide="flame"></i></div><b>Cabin fire</b><span>60 min</span></div></li>
+                    <li class="reveal" style="--i:5"><div class="tile"><div class="ico-box"><i data-lucide="snowflake"></i></div><b>Snowfall</b><span>45 min</span></div></li>
+                    <li class="reveal" style="--i:6"><div class="tile"><div class="ico-box"><i data-lucide="fan"></i></div><b>Old fan</b><span>90 min</span></div></li>
+                    <li class="reveal" style="--i:7"><div class="tile"><div class="ico-box"><i data-lucide="train-front"></i></div><b>Train at night</b><span>60 min</span></div></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Night routine -->
+        <section id="routine">
+            <div class="container routine">
+                <div class="head reveal">
+                    <span class="label">Night routine</span>
+                    <h2>Your last two hours, made easier.</h2>
+                </div>
+                <ol class="timeline">
+                    <li class="moment reveal" style="--i:0"><time>21:00</time><h3>Dim everything</h3><p>Effrix Media switches to a red-shifted screen and drops the interface brightness.</p></li>
+                    <li class="moment reveal" style="--i:1"><time>21:45</time><h3>Wind down</h3><p>A four-minute breathing session, or a stretch you can do in bed.</p></li>
+                    <li class="moment reveal" style="--i:2"><time>22:30</time><h3>Story or sound</h3><p>Pick one and set a fade. Most people choose thirty minutes.</p></li>
+                    <li class="moment reveal" style="--i:3"><time>23:00</time><h3>Nothing</h3><p>The screen goes black and stays that way until morning.</p></li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section aria-labelledby="reviews-title">
+            <div class="container">
+                <div class="head reveal">
+                    <span class="label">Reviews</span>
+                    <h2 class="sr-only" id="reviews-title">What listeners say</h2>
+                </div>
+                <ul class="reviews">
+                    <li class="reveal" style="--i:0"><blockquote class="card review" style="margin:0">
+                        <span class="five" role="img" aria-label="5 out of 5 stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span>
+                        <h3>“Finally, an app that shuts up”</h3>
+                        <p>I’ve tried six of these. This is the only one that doesn’t try to keep me on the phone.</p>
+                        <footer>Maya <span>· App Store</span></footer>
+                    </blockquote></li>
+                    <li class="reveal" style="--i:1"><blockquote class="card review" style="margin:0">
+                        <span class="five" role="img" aria-label="5 out of 5 stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span>
+                        <h3>“My kid asks for the rain one”</h3>
+                        <p>We use it for bedtime every night now. The fade-out is the whole trick.</p>
+                        <footer>Dan <span>· App Store</span></footer>
+                    </blockquote></li>
+                    <li class="reveal" style="--i:2"><blockquote class="card review" style="margin:0">
+                        <span class="five" role="img" aria-label="5 out of 5 stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span>
+                        <h3>“Worth it for the fan sound alone”</h3>
+                        <p>I travel constantly and hotel rooms are too quiet. Solved.</p>
+                        <footer>Priya <span>· App Store</span></footer>
+                    </blockquote></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing">
+            <div class="container">
+                <div class="head center reveal">
+                    <span class="label">Pricing</span>
+                    <h2>Free covers most nights.</h2>
+                </div>
+                <div class="plans">
+                    <div class="card plan reveal" style="--i:0">
+                        <span class="plan-name">Free</span>
+                        <div class="price">$0</div>
+                        <p class="price-alt">&nbsp;</p>
+                        <ul>
+                            <li><i data-lucide="check"></i>Four sounds</li>
+                            <li><i data-lucide="check"></i>Five stories</li>
+                            <li><i data-lucide="check"></i>Timers up to 30 minutes</li>
+                        </ul>
+                        <a href="#download" class="pill ghost">Download</a>
+                    </div>
+                    <div class="card plan premium reveal" style="--i:1">
+                        <span class="plan-name">Premium</span>
+                        <div class="price">$4.99<small>/month</small></div>
+                        <p class="price-alt">or $29/year</p>
+                        <ul>
+                            <li><i data-lucide="check"></i>All sounds and stories</li>
+                            <li><i data-lucide="check"></i>Offline downloads</li>
+                            <li><i data-lucide="check"></i>Unlimited timers</li>
+                            <li><i data-lucide="check"></i>New story every week</li>
+                            <li><i data-lucide="check"></i>Seven days free</li>
+                        </ul>
+                        <a href="#download" class="pill">Download</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="cta" id="download">
+            <div class="aurora" aria-hidden="true"><div class="blob lav"></div><div class="blob teal"></div></div>
+            <div class="stars" aria-hidden="true"></div>
+            <div class="container reveal">
+                <h2>Tonight, put it down at 22:30.</h2>
+                <p>Seven days free, then $4.99 a month. Cancel in two taps.</p>
+                <div class="badges">
+                    <a class="badge" href="https://apps.apple.com/" aria-label="Download on the App Store"><i data-lucide="apple"></i><span><small>Download on the</small><strong>App Store</strong></span></a>
+                    <a class="badge" href="https://play.google.com/store/apps" aria-label="Get it on Google Play"><i data-lucide="play"></i><span><small>Get it on</small><strong>Google Play</strong></span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#top" class="wordmark"><i data-lucide="moon"></i>EFFRIX MEDIA</a>
+                    <p>Sleep, without the scrolling</p>
+                </div>
+                <div>
+                    <h4>Product</h4>
+                    <ul><li><a href="#features">Features</a></li><li><a href="#sounds">Sounds</a></li><li><a href="#pricing">Pricing</a></li></ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul><li><a href="#">Support</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Press</a></li></ul>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Effrix Labs</p>
+        </div>
+    </footer>
+
+    <script>
+        addEventListener('DOMContentLoaded', function () {
+            if (window.lucide) lucide.createIcons();
+
+            // Star field: ~40 tiny divs, every 4th one twinkles
+            document.querySelectorAll('.stars').forEach(function (sky) {
+                for (var i = 0; i < 40; i++) {
+                    var s = document.createElement('div'), z = (1 + Math.random()).toFixed(1);
+                    s.style.cssText = 'left:' + Math.random() * 100 + '%;top:' + Math.random() * 100 + '%;width:' + z + 'px;height:' + z + 'px;opacity:' + (.1 + Math.random() * .2).toFixed(2);
+                    if (i % 4 === 0) {
+                        s.className = 'tw';
+                        s.style.setProperty('--d', (3 + Math.random() * 2).toFixed(1) + 's');
+                        s.style.setProperty('--dl', (-Math.random() * 5).toFixed(1) + 's');
+                    }
+                    sky.appendChild(s);
+                }
+            });
+
+            // Story waveform bars
+            document.querySelectorAll('[data-wave]').forEach(function (w) {
+                for (var i = 0; i < 38; i++) {
+                    var b = document.createElement('span');
+                    b.style.height = (22 + Math.abs(Math.sin(i * .7) * 50 + Math.sin(i * 1.9) * 28)) + '%';
+                    if (i < 13) b.className = 'on';
+                    w.appendChild(b);
+                }
+            });
+
+            // Navbar background + hero phone flattens on scroll
+            var nav = document.getElementById('nav'), tilt = document.getElementById('tilt'), ticking = false;
+            function onScroll() {
+                nav.classList.toggle('scrolled', scrollY > 12);
+                tilt.style.setProperty('--p', Math.min(scrollY / (innerHeight * .8), 1).toFixed(3));
+                ticking = false;
+            }
+            addEventListener('scroll', function () {
+                if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+            }, { passive: true });
+            onScroll();
+
+            // Fade-up reveals + timeline line draw
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+                });
+            }, { rootMargin: '0px 0px -10% 0px' });
+            document.querySelectorAll('.reveal, .timeline').forEach(function (el) { io.observe(el); });
+        });
+    </script>
+</body>
+</html>
