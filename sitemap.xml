@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://effrix.com/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image><image:loc>https://effrix.com/og-image.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/00_onboarding.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/01_login_phone.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/02_login_code.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/03_dashboard.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/06_chats_grid.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/08_messages_grid.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/10_media_details.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/12_download_progress.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/14_fullscreen_playback.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/15_history_grid.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://effrix.com/books.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://effrix.com/books/cover-bible-stories.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/books/cover-jesus-friends.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/books/cover-web-hero.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://effrix.com/privacy.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://effrix.com/terms.html</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://effrix.com/books.html</loc>
-    <lastmod>2026-09-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
 </urlset>
