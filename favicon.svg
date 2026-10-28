@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- simplified logo.svg for 16–48px: bolder hexagon + play, no fine network detail -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#005b86"/>
+      <stop offset="1" stop-color="#00344e"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <path d="M256 70L417 163V349L256 442L95 349V163Z" fill="none" stroke="#8ecdff" stroke-width="44" stroke-linejoin="round"/>
+  <path d="M212 178Q212 156 231 167L352 240Q370 256 352 272L231 345Q212 356 212 334Z" fill="#c9e6ff"/>
+</svg>
