@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Effrix">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#005b86"/>
+      <stop offset="1" stop-color="#00344e"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="url(#bg)"/>
+  <!-- network spokes + inner ring -->
+  <g stroke="#8ecdff" stroke-width="10" stroke-linecap="round" fill="none" opacity=".45">
+    <path d="M256 88V152M401.5 172L346.1 204M401.5 340L346.1 308M256 424V360M110.5 340L165.9 308M110.5 172L165.9 204"/>
+    <circle cx="256" cy="256" r="104"/>
+  </g>
+  <!-- hexagon -->
+  <path d="M256 88L401.5 172V340L256 424L110.5 340V172Z" fill="none" stroke="#8ecdff" stroke-width="22" stroke-linejoin="round"/>
+  <!-- nodes -->
+  <g fill="#8ecdff">
+    <circle cx="256" cy="88" r="22"/><circle cx="401.5" cy="172" r="22"/><circle cx="401.5" cy="340" r="22"/>
+    <circle cx="256" cy="424" r="22"/><circle cx="110.5" cy="340" r="22"/><circle cx="110.5" cy="172" r="22"/>
+  </g>
+  <!-- play -->
+  <path d="M232 206Q232 194 243 200L308 248Q318 256 308 264L243 312Q232 318 232 306Z" fill="#c9e6ff"/>
+</svg>
