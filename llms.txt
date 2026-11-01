@@ -2,15 +2,23 @@
 # This file helps LLM crawlers and AI agents discover structured content.
 # See https://llmstxt.org
 
-> Effrix is the publisher of gPlayer (GrammPlayer) for Fire TV & Android TV and Effrix Books by Ephraim Mathew on Amazon KDP.
+> Effrix is the publisher of gPlayer (GrammPlayer) for Fire TV & Android TV, HaloNotch (notch hub for MacBook & Windows) and Effrix Books by Ephraim Mathew on Amazon KDP.
 
 ## Site
 - Home: https://effrix.com/
 - Books: https://effrix.com/books.html
+- HaloNotch: https://effrix.com/halonotch.html
 - Privacy: https://effrix.com/privacy.html
 - Terms: https://effrix.com/terms.html
 - GitHub: https://github.com/abinsabu2/GrammPlayer
 - Sitemap: https://effrix.com/sitemap.xml
+
+## HaloNotch — notch hub for MacBook & Windows
+- Page: https://effrix.com/halonotch.html
+- Source & downloads: https://github.com/abinsabu2/HaloNotch (releases: macOS v1.1.0 zip, Windows preview desktop-v0.2.0 x64/arm64 zip)
+- Platforms: macOS 14+, Windows 10/11 (preview). Free, open source, unsigned builds.
+- Tabs: Dashboard, Weather (Open-Meteo), Screen Time, Clipboard (50 items + PIN Vault), Files (tray + screenshots), Media (equalizer), Calendar (Join Teams/Zoom/Meet), Reminders, Tools (focus timer, notes, camera mirror), Usage (Claude Code / Codex tokens, opt-in). Plus volume/brightness HUD.
+- Images: https://effrix.com/halonotch/dashboard.png, https://effrix.com/halonotch/icon.png
 
 ## Effrix Books — Amazon KDP by Ephraim Mathew
 All books are matte cover, white paper, black & white interior, thick outlines for crayons/markers. Expanded distribution: US UK DE FR ES IT NL PL SE BE IE JP CA AU (amazon.com, amazon.co.uk, amazon.de, amazon.fr, amazon.es, amazon.it, amazon.nl, amazon.pl, amazon.se, amazon.com.be, amazon.ie, amazon.co.jp, amazon.ca, amazon.com.au).

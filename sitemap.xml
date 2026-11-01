@@ -27,6 +27,15 @@
     <image:image><image:loc>https://effrix.com/books/cover-web-hero.png</image:loc></image:image>
   </url>
   <url>
+    <loc>https://effrix.com/halonotch.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://effrix.com/halonotch/dashboard.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/halonotch/clipboard.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/halonotch/media.png</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://effrix.com/privacy.html</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
