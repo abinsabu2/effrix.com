@@ -18,6 +18,7 @@ document.head.insertAdjacentHTML('beforeend', '<style>' +
         ['/gplayer.html', 'gPlayer'],
         ['/halonotch.html', 'HaloNotch'],
         ['/books.html', 'Books'],
+        ['/blog/gplayer-and-halonotch.html', 'Blog'],
         ['/#about', 'About']
     ];
 
