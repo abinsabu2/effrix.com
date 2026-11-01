@@ -10,7 +10,8 @@
 
 ## gPlayer
 
-- [gPlayer on Amazon Appstore](https://www.amazon.com/dp/B0H85JCRT1): Primary install for Fire TV.
+- [gPlayer Media Player — Appstore Edition 2 (Advanced)](https://www.amazon.com/dp/B0H85JCRT1): The advanced edition for all devices. Recommended. New login features coming soon.
+- [gPlayer for Fire TV — Appstore Edition 1 (Lite)](https://www.amazon.com/dp/B0FKZMV45T): A lightweight Telegram player.
 - [gPlayer APK v3.4](https://effrix.com/releases/tgPlayer_v3.4_304_release.apk): Direct download for Android TV sideloading.
 - [Source code on GitHub](https://github.com/abinsabu2/GrammPlayer): MIT License.
 - [How to watch Telegram videos on Fire TV](https://effrix.com/telegram-on-fire-tv.html): Guide comparing five options — gPlayer, the APK on Android TV, sideloading Telegram, Telegram Web and screen mirroring.
@@ -25,6 +26,10 @@
 - [My First Bible Stories Coloring Book — Read, Color, and Remember God Loves You!](https://www.amazon.com/dp/B0HKMWWLCH): ASIN B0HKMWWLCH, ISBN 9798175744331. 15 Bible stories (Creation to John 3:16), coloring scene on the left, Grade-1 story on the right. Ages 3–8, 8.5" × 8.5", 32 pages. Published 2026-09-20.
 - [Jesus and Friends: Big & Easy Bible Story Coloring Book for Toddlers](https://www.amazon.com/dp/B0HJRHS916): ASIN B0HJRHS916, ISBN 9798173634481. Large bold Bible scenes for toddlers and preschoolers, single-sided pages. Ages 3–8, 8.5" × 11", 34 pages. Published 2026-09-12.
 - [The Legendary Web Hero and Friends](https://effrix.com/books.html#webhero): 15 inspirational hero stories to colour about courage, kindness and teamwork. Ages 4–10, 8.5" × 11", 34 pages. Coming soon.
+
+## Blog
+
+- [gPlayer and HaloNotch: Telegram on your TV and a hub in your Mac notch](https://effrix.com/blog/gplayer-and-halonotch.html): Tour of both apps, which gPlayer edition to install, and how HaloNotch handles your data.
 
 ## Company
 

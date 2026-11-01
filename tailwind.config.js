@@ -4,7 +4,7 @@
 
 // Material 3 dark tonal palette, seeded from Telegram blue
 module.exports = {
-    content: ['./*.html', './site.js'],
+    content: ['./*.html', './blog/*.html', './site.js'],
     theme: {
         extend: {
             fontFamily: { sans: ['"Roboto Flex"', 'system-ui', 'sans-serif'] },
