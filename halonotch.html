@@ -49,9 +49,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300..800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
-    <script src="/site.js?v=2"></script>
+    <link rel="stylesheet" href="/site.css?v=3">
+    <script defer src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+    <script defer src="/site.js?v=3"></script>
 </head>
 <body class="bg-md-surface text-md-on-surface font-sans antialiased selection:bg-md-primary selection:text-md-on-primary">
 
@@ -63,7 +63,7 @@
             <nav aria-label="Breadcrumb" class="text-sm text-md-on-surface-variant mb-6"><a href="/" class="hover:text-md-on-surface">Home</a> <span aria-hidden="true">/</span> <span class="text-md-on-surface">HaloNotch</span></nav>
             <div class="max-w-3xl">
                 <span class="inline-flex items-center gap-2 py-1.5 px-3 rounded-lg border border-md-outline-variant text-md-on-surface-variant text-sm mb-6">
-                    <img src="halonotch/icon.png" alt="" class="w-5 h-5 rounded" width="20" height="20">
+                    <img src="halonotch/icon.webp" alt="" class="w-5 h-5 rounded" width="20" height="20">
                     HaloNotch 1.1 · macOS 14+ · Windows preview · Free &amp; open source
                 </span>
                 <h1 class="text-[2.5rem] leading-[1.05] md:text-6xl font-semibold tracking-tight mb-6">
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div class="mt-12 rounded-[28px] overflow-hidden shadow-e3 bg-md-surface-container">
-                <img src="halonotch/dashboard.png" alt="HaloNotch dashboard: up next, now playing, weather, clipboard, screen time and day progress" class="w-full aspect-[1960/772] object-cover" width="1960" height="772" fetchpriority="high">
+                <img src="halonotch/dashboard.webp" alt="HaloNotch dashboard: up next, now playing, weather, clipboard, screen time and day progress" class="w-full aspect-[1960/772] object-cover" width="1960" height="772" fetchpriority="high">
             </div>
         </div>
     </section>
@@ -157,53 +157,84 @@
             </div>
             <div class="grid md:grid-cols-2 gap-3" data-gallery>
                 <figure class="group bg-md-surface-container rounded-3xl overflow-hidden">
-                    <a href="halonotch/dashboard.png" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
-                        <img src="halonotch/dashboard.png" alt="HaloNotch dashboard tab" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
+                    <a href="halonotch/dashboard.webp" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
+                        <img src="halonotch/dashboard.webp" alt="HaloNotch dashboard tab" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
                     </a>
                     <figcaption class="px-4 py-2.5 text-xs font-medium text-md-on-surface-variant">Dashboard</figcaption>
                 </figure>
                 <figure class="group bg-md-surface-container rounded-3xl overflow-hidden">
-                    <a href="halonotch/weather.png" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
-                        <img src="halonotch/weather.png" alt="HaloNotch weather tab with hourly and 7-day forecast" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
+                    <a href="halonotch/weather.webp" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
+                        <img src="halonotch/weather.webp" alt="HaloNotch weather tab with hourly and 7-day forecast" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
                     </a>
                     <figcaption class="px-4 py-2.5 text-xs font-medium text-md-on-surface-variant">Weather</figcaption>
                 </figure>
                 <figure class="group bg-md-surface-container rounded-3xl overflow-hidden">
-                    <a href="halonotch/screenTime.png" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
-                        <img src="halonotch/screenTime.png" alt="HaloNotch screen time tab with time per app and activity by hour" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
+                    <a href="halonotch/screenTime.webp" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
+                        <img src="halonotch/screenTime.webp" alt="HaloNotch screen time tab with time per app and activity by hour" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
                     </a>
                     <figcaption class="px-4 py-2.5 text-xs font-medium text-md-on-surface-variant">Screen Time</figcaption>
                 </figure>
                 <figure class="group bg-md-surface-container rounded-3xl overflow-hidden">
-                    <a href="halonotch/clipboard.png" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
-                        <img src="halonotch/clipboard.png" alt="HaloNotch clipboard history in columns" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
+                    <a href="halonotch/clipboard.webp" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
+                        <img src="halonotch/clipboard.webp" alt="HaloNotch clipboard history in columns" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
                     </a>
                     <figcaption class="px-4 py-2.5 text-xs font-medium text-md-on-surface-variant">Clipboard</figcaption>
                 </figure>
                 <figure class="group bg-md-surface-container rounded-3xl overflow-hidden">
-                    <a href="halonotch/files.png" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
-                        <img src="halonotch/files.png" alt="HaloNotch file tray and latest screenshots" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
+                    <a href="halonotch/files.webp" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
+                        <img src="halonotch/files.webp" alt="HaloNotch file tray and latest screenshots" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
                     </a>
                     <figcaption class="px-4 py-2.5 text-xs font-medium text-md-on-surface-variant">Files</figcaption>
                 </figure>
                 <figure class="group bg-md-surface-container rounded-3xl overflow-hidden">
-                    <a href="halonotch/media.png" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
-                        <img src="halonotch/media.png" alt="HaloNotch media tab with now playing and equalizer" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
+                    <a href="halonotch/media.webp" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
+                        <img src="halonotch/media.webp" alt="HaloNotch media tab with now playing and equalizer" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
                     </a>
                     <figcaption class="px-4 py-2.5 text-xs font-medium text-md-on-surface-variant">Media</figcaption>
                 </figure>
                 <figure class="group bg-md-surface-container rounded-3xl overflow-hidden">
-                    <a href="halonotch/calendar.png" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
-                        <img src="halonotch/calendar.png" alt="HaloNotch calendar tab with month view and events" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
+                    <a href="halonotch/calendar.webp" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
+                        <img src="halonotch/calendar.webp" alt="HaloNotch calendar tab with month view and events" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
                     </a>
                     <figcaption class="px-4 py-2.5 text-xs font-medium text-md-on-surface-variant">Calendar</figcaption>
                 </figure>
                 <figure class="group bg-md-surface-container rounded-3xl overflow-hidden">
-                    <a href="halonotch/tools.png" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
-                        <img src="halonotch/tools.png" alt="HaloNotch tools tab with focus timer, notes and camera mirror" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
+                    <a href="halonotch/tools.webp" data-lightbox class="block relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-md-primary">
+                        <img src="halonotch/tools.webp" alt="HaloNotch tools tab with focus timer, notes and camera mirror" class="w-full aspect-[1960/772] object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
                     </a>
                     <figcaption class="px-4 py-2.5 text-xs font-medium text-md-on-surface-variant">Tools</figcaption>
                 </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compare -->
+    <section id="compare" class="py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mb-8">
+                <p class="text-sm font-medium text-md-primary mb-2">Compare</p>
+                <h2 class="text-3xl md:text-5xl font-semibold tracking-tight mb-4">HaloNotch vs other Dynamic Island apps for Mac</h2>
+                <p class="text-md-on-surface-variant">Notch apps bring a Dynamic Island-style panel to the MacBook. Here is how HaloNotch sits next to the best-known ones.</p>
+            </div>
+            <div class="overflow-x-auto bg-md-surface-low rounded-3xl">
+                <table class="w-full min-w-[560px] text-sm text-md-on-surface-variant">
+                    <thead>
+                        <tr class="text-md-on-surface"><th scope="col" class="text-left font-medium p-3"><span class="sr-only">Feature</span></th><th scope="col" class="text-left font-medium p-3">HaloNotch</th><th scope="col" class="text-left font-medium p-3">NotchNook</th><th scope="col" class="text-left font-medium p-3">Boring Notch</th><th scope="col" class="text-left font-medium p-3">DynamicLake</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t border-md-outline-variant/60"><th scope="row" class="text-left font-medium p-3">Price</th><td class="p-3 font-medium text-md-on-surface">Free</td><td class="p-3">Paid</td><td class="p-3">Free</td><td class="p-3">Paid</td></tr>
+                        <tr class="border-t border-md-outline-variant/60"><th scope="row" class="text-left font-medium p-3">Open source</th><td class="p-3 font-medium text-md-on-surface">Yes</td><td class="p-3">No</td><td class="p-3">Yes</td><td class="p-3">No</td></tr>
+                        <tr class="border-t border-md-outline-variant/60"><th scope="row" class="text-left font-medium p-3">macOS</th><td class="p-3 font-medium text-md-on-surface">Yes</td><td class="p-3">Yes</td><td class="p-3">Yes</td><td class="p-3">Yes</td></tr>
+                        <tr class="border-t border-md-outline-variant/60"><th scope="row" class="text-left font-medium p-3">Windows</th><td class="p-3 font-medium text-md-on-surface">Preview</td><td class="p-3">No</td><td class="p-3">No</td><td class="p-3">No</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-md-on-surface-variant mt-3">Other apps checked November 2026 from their public listings. Check each developer's site for current pricing.</p>
+            <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div class="bg-md-surface-low rounded-3xl p-5"><h3 class="font-semibold mb-1">PIN-protected Vault</h3><p class="text-sm text-md-on-surface-variant">Keep secrets in clipboard history, encrypted with your PIN.</p></div>
+                <div class="bg-md-surface-low rounded-3xl p-5"><h3 class="font-semibold mb-1">Screen time</h3><p class="text-sm text-md-on-surface-variant">Time per app and category, stored only on your computer.</p></div>
+                <div class="bg-md-surface-low rounded-3xl p-5"><h3 class="font-semibold mb-1">AI usage</h3><p class="text-sm text-md-on-surface-variant">Claude Code and Codex token usage from local logs, opt-in.</p></div>
+                <div class="bg-md-surface-low rounded-3xl p-5"><h3 class="font-semibold mb-1">Hidden when sharing</h3><p class="text-sm text-md-on-surface-variant">The panel stays out of screen shares and recordings.</p></div>
             </div>
         </div>
     </section>
@@ -261,6 +292,7 @@
                     <li>Vault secrets are encrypted with your PIN (PBKDF2-SHA256 + AES-GCM) and auto-lock after 5 minutes, on sleep and on screen lock.</li>
                     <li>Weather sends only an approximate location (~1 km) or the city you type to Open-Meteo. Nothing else leaves the machine.</li>
                     <li>The notch panel is hidden from screen sharing and recordings.</li>
+                    <li><a href="/halonotch-privacy.html" class="text-md-primary underline underline-offset-2">Read the full HaloNotch privacy policy</a></li>
                 </ul>
             </div>
             <div class="bg-md-surface-low rounded-3xl p-6 md:p-8 flex flex-col">
@@ -271,5 +303,21 @@
         </div>
     </section>
     </main>
+    <footer class="py-8 bg-md-surface-lowest text-xs text-md-on-surface-variant">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3"><img src="/logo.svg" alt="" class="h-6 w-6" width="24" height="24"> &copy; 2026 Effrix (effrix.com). All rights reserved.</div>
+            <nav aria-label="Footer" class="flex flex-wrap justify-center gap-x-6 gap-y-1">
+                <a href="/gplayer.html" class="py-3.5 hover:text-md-on-surface">gPlayer</a>
+                <a href="/telegram-on-fire-tv.html" class="py-3.5 hover:text-md-on-surface">Telegram on Fire TV</a>
+                <a href="/halonotch.html" class="py-3.5 hover:text-md-on-surface">HaloNotch</a>
+                <a href="/books.html" class="py-3.5 hover:text-md-on-surface">Books</a>
+                <a href="/privacy.html" class="py-3.5 hover:text-md-on-surface">gPlayer Privacy</a>
+                <a href="/halonotch-privacy.html" class="py-3.5 hover:text-md-on-surface">HaloNotch Privacy</a>
+                <a href="/terms.html" class="py-3.5 hover:text-md-on-surface">Terms &amp; Conditions</a>
+                <a href="https://github.com/abinsabu2" target="_blank" rel="noopener" class="py-3.5 hover:text-md-on-surface">GitHub</a>
+                <a href="https://www.amazon.com/dp/B0H85JCRT1" data-asin="B0H85JCRT1" target="_blank" rel="noopener" class="py-3.5 hover:text-md-on-surface">Amazon Appstore</a>
+            </nav>
+        </div>
+    </footer>
 </body>
 </html>
