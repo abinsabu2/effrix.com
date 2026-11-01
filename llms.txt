@@ -5,7 +5,8 @@
 > Effrix is the publisher of gPlayer (GrammPlayer) for Fire TV & Android TV, HaloNotch (notch hub for MacBook & Windows) and Effrix Books by Ephraim Mathew on Amazon KDP.
 
 ## Site
-- Home: https://effrix.com/
+- Home (Effrix company & products): https://effrix.com/
+- gPlayer: https://effrix.com/gplayer.html
 - Books: https://effrix.com/books.html
 - HaloNotch: https://effrix.com/halonotch.html
 - Privacy: https://effrix.com/privacy.html
@@ -60,7 +61,7 @@ Visit https://effrix.com/books.html and select your marketplace: US UK DE FR ES 
 
 ## Structured data
 - CollectionPage + ItemList + 3× Book JSON-LD on https://effrix.com/books.html (ids: #biblestories, #jesusfriends, #webhero)
-- SoftwareApplication JSON-LD on https://effrix.com/ for gPlayer
+- Organization + ItemList (gPlayer, HaloNotch) JSON-LD on https://effrix.com/; SoftwareApplication JSON-LD on https://effrix.com/gplayer.html and https://effrix.com/halonotch.html
 - BreadcrumbList on both pages
 - Open Graph + Twitter cards on both pages
 

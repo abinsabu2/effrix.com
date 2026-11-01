@@ -1,7 +1,7 @@
 {
-  "name": "gPlayer by Effrix",
-  "short_name": "gPlayer",
-  "description": "Your Telegram media, on the big screen — Fire TV & Android TV.",
+  "name": "Effrix",
+  "short_name": "Effrix",
+  "description": "Apps and books by Effrix: gPlayer for Fire TV & Android TV, HaloNotch for MacBook & Windows, and Effrix Books.",
   "start_url": "/",
   "display": "browser",
   "background_color": "#0f1418",

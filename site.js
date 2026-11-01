@@ -53,13 +53,10 @@ document.head.insertAdjacentHTML('beforeend', '<style>' +
 
 (function () {
     var NAV = [
-        ['/#features', 'Features'],
-        ['/#screenshots', 'Screenshots'],
-        ['/#login', 'How to log in'],
-        ['/#download', 'Download APK'],
-        ['/#open-source', 'Open source'],
+        ['/gplayer.html', 'gPlayer'],
         ['/halonotch.html', 'HaloNotch'],
-        ['/books.html', 'Books']
+        ['/books.html', 'Books'],
+        ['/#about', 'About']
     ];
     var GITHUB_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>';
 
@@ -81,13 +78,13 @@ document.head.insertAdjacentHTML('beforeend', '<style>' +
                 '<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">' +
                     '<a href="/" class="flex items-center gap-3 shrink-0" aria-label="Effrix home">' +
                         '<img src="/logo.svg" alt="" class="h-9 w-9" width="36" height="36">' +
-                        '<span class="font-semibold tracking-tight text-md-on-surface">gPlayer</span>' +
+                        '<span class="font-semibold tracking-tight text-md-on-surface">Effrix</span>' +
                     '</a>' +
                     '<nav aria-label="Main" class="hidden lg:flex items-center gap-1 text-sm font-medium text-md-on-surface-variant">' +
                         links('state px-4 py-2 rounded-full hover:text-md-on-surface') +
                     '</nav>' +
                     '<div class="flex items-center gap-2">' +
-                        '<a href="https://www.amazon.com/dp/B0H85JCRT1" data-asin="B0H85JCRT1" target="_blank" rel="noopener" class="state bg-md-primary text-md-on-primary font-medium text-sm h-10 px-5 rounded-full flex items-center gap-2 shrink-0"><i data-lucide="tv" class="w-4 h-4"></i> Get gPlayer</a>' +
+                        '<a href="/#products" class="state bg-md-primary text-md-on-primary font-medium text-sm h-10 px-5 rounded-full flex items-center gap-2 shrink-0"><i data-lucide="layout-grid" class="w-4 h-4"></i> Products</a>' +
                         '<button type="button" id="menu-btn" class="state lg:hidden w-10 h-10 rounded-full flex items-center justify-center text-md-on-surface" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><i data-lucide="menu" class="w-6 h-6"></i></button>' +
                     '</div>' +
                 '</div>' +
@@ -119,9 +116,10 @@ document.head.insertAdjacentHTML('beforeend', '<style>' +
                     '<nav aria-label="Footer" class="flex flex-wrap justify-center gap-x-6 gap-y-2">' +
                         '<a href="/privacy.html" class="hover:text-md-on-surface">Privacy Policy</a>' +
                         '<a href="/terms.html" class="hover:text-md-on-surface">Terms &amp; Conditions</a>' +
+                        '<a href="/gplayer.html" class="hover:text-md-on-surface">gPlayer</a>' +
                         '<a href="/books.html" class="hover:text-md-on-surface">Books</a>' +
                         '<a href="/halonotch.html" class="hover:text-md-on-surface">HaloNotch</a>' +
-                        '<a href="https://github.com/abinsabu2/GrammPlayer" target="_blank" rel="noopener" class="hover:text-md-on-surface inline-flex items-center gap-1.5">' + GITHUB_SVG + ' GitHub</a>' +
+                        '<a href="https://github.com/abinsabu2" target="_blank" rel="noopener" class="hover:text-md-on-surface inline-flex items-center gap-1.5">' + GITHUB_SVG + ' GitHub</a>' +
                         '<a href="https://www.amazon.com/dp/B0H85JCRT1" data-asin="B0H85JCRT1" target="_blank" rel="noopener" class="hover:text-md-on-surface">Amazon Appstore</a>' +
                     '</nav>' +
                 '</div>' +
