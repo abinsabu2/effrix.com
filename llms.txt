@@ -15,6 +15,7 @@
 - [gPlayer APK v3.4](https://effrix.com/releases/tgPlayer_v3.4_304_release.apk): Direct download for Android TV sideloading.
 - [Source code on GitHub](https://github.com/abinsabu2/GrammPlayer): MIT License.
 - [How to watch Telegram videos on Fire TV](https://effrix.com/telegram-on-fire-tv.html): Guide comparing five options — gPlayer, the APK on Android TV, sideloading Telegram, Telegram Web and screen mirroring.
+- [How to watch Telegram videos on Android TV and Google TV](https://effrix.com/telegram-on-android-tv.html): Guide to four options — the gPlayer APK, sideloading Telegram, casting your phone screen and Telegram Web.
 
 ## HaloNotch
 
