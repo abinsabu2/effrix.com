@@ -2,75 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://effrix.com/</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-11-02</lastmod>
     <image:image><image:loc>https://effrix.com/og-effrix.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://effrix.com/gplayer.html</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-11-02</lastmod>
     <image:image><image:loc>https://effrix.com/og-image.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/00_onboarding.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/01_login_phone.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/02_login_code.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/03_dashboard.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/06_chats_grid.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/08_messages_grid.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/10_media_details.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/12_download_progress.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/14_fullscreen_playback.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/15_history_grid.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/00_onboarding.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/01_login_phone.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/02_login_code.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/03_dashboard.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/06_chats_grid.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/08_messages_grid.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/10_media_details.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/12_download_progress.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/14_fullscreen_playback.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/amazon-review-screenshots/15_history_grid.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://effrix.com/books.html</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://effrix.com/books/cover-bible-stories.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/books/cover-jesus-friends.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/books/cover-web-hero.png</image:loc></image:image>
+    <lastmod>2026-11-02</lastmod>
+    <image:image><image:loc>https://effrix.com/books/cover-bible-stories.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/books/cover-jesus-friends.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://effrix.com/halonotch.html</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-11-02</lastmod>
     <image:image><image:loc>https://effrix.com/halonotch/og-image.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/halonotch/dashboard.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/halonotch/clipboard.png</image:loc></image:image>
-    <image:image><image:loc>https://effrix.com/halonotch/media.png</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/halonotch/dashboard.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/halonotch/clipboard.webp</image:loc></image:image>
+    <image:image><image:loc>https://effrix.com/halonotch/media.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://effrix.com/privacy.html</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-11-02</lastmod>
   </url>
   <url>
     <loc>https://effrix.com/terms.html</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-11-02</lastmod>
   </url>
   <url>
     <loc>https://effrix.com/telegram-on-fire-tv.html</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-11-02</lastmod>
   </url>
   <url>
     <loc>https://effrix.com/halonotch-privacy.html</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-11-02</lastmod>
   </url>
   <url>
     <loc>https://effrix.com/blog/gplayer-and-halonotch.html</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-11-02</lastmod>
   </url>
 </urlset>

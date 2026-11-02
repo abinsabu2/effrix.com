@@ -1,4 +1,4 @@
-// Shared site chrome for effrix.com: header/menu (footer is static HTML),
+// Shared site chrome for effrix.com: mobile menu (header/footer are static HTML),
 // Amazon marketplace links and the image lightbox. Load (deferred) after the
 // Lucide script in <head>. Theme tokens live in tailwind.config.js -> site.css.
 
@@ -14,49 +14,8 @@ document.head.insertAdjacentHTML('beforeend', '<style>' +
     '</style>');
 
 (function () {
-    var NAV = [
-        ['/gplayer.html', 'gPlayer'],
-        ['/halonotch.html', 'HaloNotch'],
-        ['/books.html', 'Books'],
-        ['/blog/gplayer-and-halonotch.html', 'Blog'],
-        ['/#about', 'About']
-    ];
-
-    function isCurrent(href) {
-        var path = location.pathname.replace(/index\.html$/, '');
-        return href.indexOf('#') < 0 && href === path;
-    }
-
-    function links(cls) {
-        return NAV.map(function (n) {
-            var cur = isCurrent(n[0]);
-            return '<a href="' + n[0] + '" class="' + cls + (cur ? ' text-md-primary' : '') + '"' + (cur ? ' aria-current="page"' : '') + '>' + n[1] + '</a>';
-        }).join('');
-    }
-
-    function renderHeader() {
-        document.body.insertAdjacentHTML('afterbegin',
-            '<header class="fixed top-0 w-full bg-md-surface/85 backdrop-blur-xl z-50 border-b border-md-outline-variant/40">' +
-                '<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">' +
-                    '<a href="/" class="flex items-center gap-3 shrink-0" aria-label="Effrix home">' +
-                        '<img src="/logo.svg" alt="" class="h-9 w-9" width="36" height="36">' +
-                        '<span class="font-semibold tracking-tight text-md-on-surface">Effrix</span>' +
-                    '</a>' +
-                    '<nav aria-label="Main" class="hidden lg:flex items-center gap-1 text-sm font-medium text-md-on-surface-variant">' +
-                        links('state px-4 py-2 rounded-full hover:text-md-on-surface') +
-                    '</nav>' +
-                    '<div class="flex items-center gap-2">' +
-                        '<a href="/#products" class="state bg-md-primary text-md-on-primary font-medium text-sm h-10 px-5 rounded-full flex items-center gap-2 shrink-0"><i data-lucide="layout-grid" class="w-4 h-4"></i> Products</a>' +
-                        '<button type="button" id="menu-btn" class="state lg:hidden w-10 h-10 rounded-full flex items-center justify-center text-md-on-surface" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><i data-lucide="menu" class="w-6 h-6"></i></button>' +
-                    '</div>' +
-                '</div>' +
-                '<nav id="mobile-menu" aria-label="Main" hidden class="lg:hidden border-t border-md-outline-variant/40 bg-md-surface px-4 py-3">' +
-                    '<div class="max-w-7xl mx-auto grid gap-1 text-base font-medium text-md-on-surface-variant">' +
-                        links('state px-4 py-3 rounded-2xl hover:text-md-on-surface') +
-                    '</div>' +
-                '</nav>' +
-            '</header>');
-
+    // Header is static HTML in every page; this only wires the mobile menu.
+    function initMenu() {
         var btn = document.getElementById('menu-btn'), menu = document.getElementById('mobile-menu');
         function setOpen(open) {
             menu.hidden = !open;
@@ -205,7 +164,7 @@ document.head.insertAdjacentHTML('beforeend', '<style>' +
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        renderHeader();
+        initMenu();
         initMarketplace();
         initLightbox();
         lucide.createIcons();

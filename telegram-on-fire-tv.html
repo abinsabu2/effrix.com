@@ -40,21 +40,50 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/site.css?v=3">
+    <link rel="stylesheet" href="/site.css?v=4">
     <script defer src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
-    <script defer src="/site.js?v=4"></script>
+    <script defer src="/site.js?v=5"></script>
 </head>
 <body class="bg-md-surface text-md-on-surface font-sans antialiased selection:bg-md-primary selection:text-md-on-primary">
+    <header class="fixed top-0 w-full bg-md-surface/85 backdrop-blur-xl z-50 border-b border-md-outline-variant/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            <a href="/" class="flex items-center gap-3 shrink-0 h-11" aria-label="Effrix home">
+                <img src="/logo.svg" alt="" class="h-9 w-9" width="36" height="36">
+                <span class="font-semibold tracking-tight text-md-on-surface">Effrix</span>
+            </a>
+            <nav aria-label="Main" class="hidden lg:flex items-center gap-1 text-sm font-medium text-md-on-surface-variant">
+                <a href="/gplayer.html" class="state px-4 py-3 rounded-full hover:text-md-on-surface">gPlayer</a>
+                <a href="/halonotch.html" class="state px-4 py-3 rounded-full hover:text-md-on-surface">HaloNotch</a>
+                <a href="/books.html" class="state px-4 py-3 rounded-full hover:text-md-on-surface">Books</a>
+                <a href="/blog/gplayer-and-halonotch.html" class="state px-4 py-3 rounded-full hover:text-md-on-surface">Blog</a>
+                <a href="/#about" class="state px-4 py-3 rounded-full hover:text-md-on-surface">About</a>
+            </nav>
+            <div class="flex items-center gap-2">
+                <a href="/#products" class="state bg-md-primary text-md-on-primary font-medium text-sm h-11 px-5 rounded-full flex items-center gap-2 shrink-0"><i data-lucide="layout-grid" class="w-4 h-4"></i> Products</a>
+                <button type="button" id="menu-btn" class="state lg:hidden w-11 h-11 rounded-full flex items-center justify-center text-md-on-surface" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><i data-lucide="menu" class="w-6 h-6"></i></button>
+            </div>
+        </div>
+        <nav id="mobile-menu" aria-label="Main" hidden class="lg:hidden border-t border-md-outline-variant/40 bg-md-surface px-4 py-3">
+            <div class="max-w-7xl mx-auto grid gap-1 text-base font-medium text-md-on-surface-variant">
+                <a href="/gplayer.html" class="state px-4 py-3 rounded-2xl hover:text-md-on-surface">gPlayer</a>
+                <a href="/halonotch.html" class="state px-4 py-3 rounded-2xl hover:text-md-on-surface">HaloNotch</a>
+                <a href="/books.html" class="state px-4 py-3 rounded-2xl hover:text-md-on-surface">Books</a>
+                <a href="/blog/gplayer-and-halonotch.html" class="state px-4 py-3 rounded-2xl hover:text-md-on-surface">Blog</a>
+                <a href="/#about" class="state px-4 py-3 rounded-2xl hover:text-md-on-surface">About</a>
+            </div>
+        </nav>
+    </header>
 
         <main class="pt-28 pb-20">
         <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav aria-label="Breadcrumb" class="text-sm text-md-on-surface-variant mb-6"><a href="/" class="hover:text-md-on-surface">Home</a> <span aria-hidden="true">/</span> <a href="/gplayer.html" class="hover:text-md-on-surface">gPlayer</a> <span aria-hidden="true">/</span> <span class="text-md-on-surface">Telegram on Fire TV</span></nav>
+            <nav aria-label="Breadcrumb" class="text-sm text-md-on-surface-variant mb-6"><a href="/" class="py-3 hover:text-md-on-surface">Home</a> <span aria-hidden="true">/</span> <a href="/gplayer.html" class="py-3 hover:text-md-on-surface">gPlayer</a> <span aria-hidden="true">/</span> <span class="text-md-on-surface">Telegram on Fire TV</span></nav>
 
             <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-3">How to watch Telegram videos on Fire TV</h1>
             <p class="text-sm text-md-on-surface-variant mb-10">By Abin Sabu, developer of gPlayer · Updated 1 November 2026</p>
 
             <div class="space-y-5 text-md-on-surface-variant text-[17px] leading-relaxed">
-                <p class="text-lg text-md-on-surface">Telegram does not offer an app for Fire TV in the Amazon Appstore, and its Android phone app is not built for a TV remote. You can still watch the videos, photos and documents in your Telegram chats on the big screen. Here are five ways, easiest first.</p>
+                <p class="text-lg text-md-on-surface">Telegram does not offer an app for Fire TV or the Fire TV Stick (Firestick) in the Amazon Appstore, and its Android phone app is not built for a TV remote. You can still watch the videos, photos and documents in your Telegram chats on the big screen. Here are five ways, easiest first.</p>
+                <p class="text-sm">Disclosure: I build gPlayer, the first option below. The other four don't use any app of mine.</p>
 
                 <nav aria-label="On this page" class="bg-md-surface-low rounded-3xl p-6 text-[15px]">
                     <p class="font-medium text-md-on-surface mb-2">On this page</p>
